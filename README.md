@@ -6,6 +6,6 @@ Immerse yourself in a fantastic universe and confront formidable monsters in thi
 
 ### Here is what you can do :
 
-- [] Buy stats in shop
-- [] Save a game
-- [] Load a saved game
+- [ ] Buy stats in shop
+- [ ] Save a game
+- [ ] Load a saved game
