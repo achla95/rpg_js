@@ -9,9 +9,10 @@ const welcomeMenuAndUserChoice = async () => {
   console.log("1. Start game 🎮")
   console.log("2. Load game 💾")
   console.log("3. Exit game ❌")
+  const mini = 1
+  const maxi = 3
   const choice = Number(await ask("Your choice (1-3) : "))
-  if (choice < 1 || choice > 3 || isNaN(choice)) {
-    console.log(choice)
+  if (choice < mini || choice > maxi || isNaN(choice)) {
     return welcomeMenuAndUserChoice()
   } else if (choice === 1) {
     mainMenuAndUserChoice()

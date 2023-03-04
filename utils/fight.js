@@ -62,9 +62,9 @@ const fight = () => {
       readline.on("line", (input) => {
         if (input === "") {
           if (userHp <= 0) {
-            welcomeMenuAndUserChoice(1, 3)
+            welcomeMenuAndUserChoice()
           } else {
-            mainMenuAndUserChoice(1, 4)
+            mainMenuAndUserChoice()
           }
         }
       })
