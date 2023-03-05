@@ -6,6 +6,8 @@ import { battleMenu } from "./battleMenu.js"
 import fight from "../utils/fight.js"
 import exitMenu from "./exitMenu.js"
 import shopMenu from "./shopMenu.js"
+import saveGame from "../db/saveGame.js"
+import config from "../config.js"
 
 const mainMenuAndUserChoice = async () => {
   textBoxMenu("Main menu")
@@ -31,6 +33,7 @@ const mainMenuAndUserChoice = async () => {
   } else if (choice === 2) {
     shopMenu()
   } else if (choice === 3) {
+    saveGame(config.db.path, userStats)
   } else {
     exitMenu()
   }
