@@ -6,13 +6,13 @@ import { readline } from "./readline.js"
 import mainMenuAndUserChoice from "../menu/mainMenu.js"
 import welcomeMenuAndUserChoice from "../menu/welcomeMenu.js"
 
-const fight = () => {
+const fight = async () => {
   let round = 1
   let monsterHp = choosenMobStats.lifepoint
   let userHp = userStats.lifepoint
   let roundsFinished = false
 
-  const promise = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let interval = setInterval(() => {
       roundMenu(`Round #${round}`)
       const userDamage = damage(
@@ -50,9 +50,7 @@ const fight = () => {
         console.log(`You lost ${monsterDamage}HP 🩸 (You ${userHp}HP)`)
       }
     }, 1000)
-  })
-
-  promise.then(() => {
+  }).then(() => {
     if (roundsFinished) {
       console.log("")
       console.log(

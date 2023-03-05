@@ -6,13 +6,14 @@ import mainMenuAndUserChoice from "./mainMenu.js"
 import { userStats } from "../utils/userAndMobsStats.js"
 
 const printIfNoCoin = async () => {
-  await new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     console.log(chalk.bgRed("Not enough coin"))
     setTimeout(() => {
       resolve()
     }, 2000)
+  }).then(() => {
+    return shopMenu()
   })
-  return shopMenu()
 }
 
 const shopMenu = async () => {
