@@ -8,4 +8,4 @@ Immerse yourself in a fantastic universe and confront formidable monsters in thi
 
 - [x] Buy potion in shop
 - [x] Save a game
-- [ ] Load a saved game
+- [x] Load a saved game

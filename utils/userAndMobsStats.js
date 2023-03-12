@@ -1,5 +1,6 @@
 import { randomInt } from "node:crypto"
-const userStats = {
+
+let userStats = {
   strength: randomInt(1, 20),
   brain: randomInt(5, 15),
   speed: 12,
@@ -28,6 +29,8 @@ const mobsStats = {
     lifepoint: randomInt(100, 200),
   },
 }
-export { userStats, mobsStats }
 
-//modifier le nom du fichier
+const updateUserStat = (stats) => {
+  userStats = stats
+}
+export { userStats, mobsStats, updateUserStat }

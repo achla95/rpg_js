@@ -2,6 +2,7 @@ import textBoxMenu from "./textBoxMenu.js"
 import { ask } from "../utils/readline.js"
 import mainMenuAndUserChoice from "./mainMenu.js"
 import exitMenu from "./exitMenu.js"
+import loadGame from "../db/loadGame.js"
 
 const welcomeMenuAndUserChoice = async () => {
   textBoxMenu("Welcome")
@@ -17,7 +18,7 @@ const welcomeMenuAndUserChoice = async () => {
   } else if (choice === 1) {
     mainMenuAndUserChoice()
   } else if (choice === 2) {
-    //todo
+    loadGame()
   } else {
     exitMenu()
   }
