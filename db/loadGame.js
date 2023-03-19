@@ -10,7 +10,7 @@ const printNogameloadedFound = async () => {
     console.log(chalk.green("No saved Game"))
     setTimeout(() => {
       resolve()
-    }, 2000)
+    }, 1500)
   }).then(() => {
     return welcomeMenuAndUserChoice()
   })
@@ -23,7 +23,7 @@ const loadGame = async () => {
     updateUserStat(parsedData)
     return mainMenuAndUserChoice()
   } catch (e) {
-    printNogameloadedFound()
+    return printNogameloadedFound()
   }
 }
 

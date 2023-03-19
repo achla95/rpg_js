@@ -1,4 +1,3 @@
-import textBoxMenu from "./textBoxMenu.js"
 const roundMenu = (text) => {
   const width = 30
   const line = "+".padEnd(width + 2, "-") + "+"

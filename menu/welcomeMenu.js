@@ -16,11 +16,11 @@ const welcomeMenuAndUserChoice = async () => {
   if (choice < mini || choice > maxi || isNaN(choice)) {
     return welcomeMenuAndUserChoice()
   } else if (choice === 1) {
-    mainMenuAndUserChoice()
+    return mainMenuAndUserChoice()
   } else if (choice === 2) {
-    loadGame()
+    return loadGame()
   } else {
-    exitMenu()
+    return exitMenu()
   }
 }
 export default welcomeMenuAndUserChoice

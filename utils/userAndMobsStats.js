@@ -5,7 +5,7 @@ let userStats = {
   brain: randomInt(5, 15),
   speed: 12,
   luck: 9,
-  lifepoint: randomInt(100, 300),
+  lifepoint: randomInt(150, 300),
   coin: 0,
   experience: 0,
 }
@@ -16,17 +16,23 @@ const mobsStats = {
     luck: 5,
     lifepoint: randomInt(80, 150),
   },
-  Werewolf: {
+  Troll: {
     strength: randomInt(5, 9),
     brain: randomInt(4, 8),
     luck: 8,
     lifepoint: randomInt(100, 200),
   },
-  Monster: {
-    strength: randomInt(10, 18),
+  Wyverne: {
+    strength: randomInt(18, 25),
+    brain: randomInt(8, 15),
+    luck: 8,
+    lifepoint: randomInt(250, 300),
+  },
+  Kraken: {
+    strength: randomInt(10, 25),
     brain: randomInt(8, 18),
     luck: 10,
-    lifepoint: randomInt(100, 200),
+    lifepoint: randomInt(300, 450),
   },
 }
 

@@ -1,34 +1,48 @@
-import { battleMenu, choosenMobStats } from "../menu/battleMenu.js"
+import { battleMenu, selectRandomMob } from "../menu/battleMenu.js"
 import { userStats } from "./userAndMobsStats.js"
 import roundMenu from "../menu/fightRoundMenu.js"
 import damage from "./computeDamage.js"
 import { readline } from "./readline.js"
 import mainMenuAndUserChoice from "../menu/mainMenu.js"
 import welcomeMenuAndUserChoice from "../menu/welcomeMenu.js"
+import { randomInt } from "node:crypto"
 
 const fight = async () => {
+  const mob = selectRandomMob()
+  const choosenMobStats = { ...mob[1] }
   let round = 1
   let monsterHp = choosenMobStats.lifepoint
   let userHp = userStats.lifepoint
   let roundsFinished = false
+  const missHitPercentage = 20
+  battleMenu(mob)
 
   return new Promise((resolve, reject) => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       roundMenu(`Round #${round}`)
       const userDamage = damage(
         userStats.strength,
         userStats.brain,
         userStats.luck
       )
-      const monsterDamage = damage(
-        choosenMobStats.strength,
-        choosenMobStats.brain,
-        choosenMobStats.luck
-      )
-      userHp -= monsterDamage
-      monsterHp -= userDamage
-      round += 1
-
+      let monsterDamage = 0
+      const computeMissHit = randomInt(1, 100)
+      if (computeMissHit < missHitPercentage) {
+        monsterHp -= userDamage
+        console.log("The monster missed!")
+        console.log(
+          `The monster lost ${userDamage}HP 💣 (Monster ${monsterHp}HP)`
+        )
+      } else {
+        monsterDamage = damage(
+          choosenMobStats.strength,
+          choosenMobStats.brain,
+          choosenMobStats.luck
+        )
+        userHp -= monsterDamage
+        monsterHp -= userDamage
+        console.log(`You lost ${monsterDamage}HP 🩸 (You ${userHp}HP)`)
+      }
       if (monsterHp <= 0) {
         console.log(`Monster lost ${userDamage}HP 💣 (Monster 0HP)`)
         console.log("The monster is dead! YOU WIN!")
@@ -44,11 +58,13 @@ const fight = async () => {
         roundsFinished = true
         resolve()
       } else {
-        console.log(
-          `The monster lost ${userDamage}HP 💣 (Monster ${monsterHp}HP)`
-        )
-        console.log(`You lost ${monsterDamage}HP 🩸 (You ${userHp}HP)`)
+        if (monsterDamage > 0) {
+          console.log(
+            `The monster lost ${userDamage}HP 💣 (Monster ${monsterHp}HP)`
+          )
+        }
       }
+      round += 1
     }, 1000)
   }).then(() => {
     if (roundsFinished) {
@@ -60,9 +76,9 @@ const fight = async () => {
       readline.on("line", (input) => {
         if (input === "") {
           if (userHp <= 0) {
-            welcomeMenuAndUserChoice()
+            return welcomeMenuAndUserChoice()
           } else {
-            mainMenuAndUserChoice()
+            return mainMenuAndUserChoice()
           }
         }
       })
@@ -74,6 +90,3 @@ const fight = async () => {
 }
 
 export default fight
-
-/*
- */

@@ -28,14 +28,13 @@ const mainMenuAndUserChoice = async () => {
   if (choice < mini || choice > maxi || isNaN(choice)) {
     return mainMenuAndUserChoice()
   } else if (choice === 1) {
-    battleMenu()
-    fight()
+    return fight()
   } else if (choice === 2) {
-    shopMenu()
+    return shopMenu()
   } else if (choice === 3) {
-    saveGame(config.db.path, userStats)
+    return saveGame(config.db.path, userStats)
   } else {
-    exitMenu()
+    return exitMenu()
   }
 }
 

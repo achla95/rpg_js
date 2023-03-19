@@ -6,4 +6,4 @@ const damage = (strength, brain, luck) => {
 }
 export default damage
 
-// elaborer une formule pcq celle la est un peu naze siuuuuuu
+// elaborer une meilleure formule pcq celle là est un peu naze
